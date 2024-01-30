@@ -1,26 +1,26 @@
 import Navbar from "../../components/Navbar";
-import Table from "../../components/Table";
+// import Table from "../../components/Table";
 import logo from "../../assets/icons/logo.svg";
 import skygradient from "../../assets/icons/sky-gradient.png";
-import lightbulb from "../../assets/icons/lightbulb.svg";
+// import lightbulb from "../../assets/icons/lightbulb.svg";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { BsFillHouseFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useOutingStore, useUserStore } from "../../store/store";
-import useFetchOutings from "../../helpers/fetchOutingHook";
+// import useFetchOutings from "../../helpers/fetchOutingHook";
 import AvatarModal from "../../components/AvatarModal";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { boysAvatars, girlsAvatars } from "../../helpers/constants";
-import DateRange from "../../components/DateRange";
+// import DateRange from "../../components/DateRange";
 import Dropdown from "../../components/Dropdown";
-import moment from "moment";
-import Pagination from "../../components/Pagination";
+// import moment from "moment";
+// import Pagination from "../../components/Pagination";
 
 const studentDashboard: React.FC = () => {
-  useFetchOutings("/outings", { isOpen: false });
+  // useFetchOutings("/outings", { isOpen: false });
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
@@ -52,34 +52,34 @@ const studentDashboard: React.FC = () => {
   };
 
   const { user } = useUserStore();
-  const { outing, isLoading } = useOutingStore();
+  // const { outing, isLoading } = useOutingStore();
 
-  const columns: TableColumn[] = ["Out Time", "In Time", "Late By", "Reason"];
-  const values: TableRow[] = [];
+  // const columns: TableColumn[] = ["Out Time", "In Time", "Late By", "Reason"];
+  // const values: TableRow[] = [];
 
-  if (!isLoading) {
-    outing?.map((unit) => {
-      const newObj = {
-        "Out Time": moment(unit.outTime, "DD-MM-YYYY HH:mm:ss").format('DD-MM-YYYY HH:mm'),
-        "In Time": unit.inTime,
-        "Late By": unit.lateBy,
-        Reason: unit.reason,
-      };
+  // if (!isLoading) {
+  //   outing?.map((unit) => {
+  //     const newObj = {
+  //       "Out Time": moment(unit.outTime, "DD-MM-YYYY HH:mm:ss").format('DD-MM-YYYY HH:mm'),
+  //       "In Time": unit.inTime,
+  //       "Late By": unit.lateBy,
+  //       Reason: unit.reason,
+  //     };
 
-      values.push(newObj);
-      values.sort((a, b) => {
-        if (a["Out Time"] > b["Out Time"]) {
-          return -1;
-        }
+  //     values.push(newObj);
+  //     values.sort((a, b) => {
+  //       if (a["Out Time"] > b["Out Time"]) {
+  //         return -1;
+  //       }
 
-        if (a["Out Time"] < b["Out Time"]) {
-          return 1;
-        }
+  //       if (a["Out Time"] < b["Out Time"]) {
+  //         return 1;
+  //       }
 
-        return 0;
-      });
-    });
-  }
+  //       return 0;
+  //     });
+  //   });
+  // }
 
   return (
     <div className="h-screen">
@@ -129,7 +129,7 @@ const studentDashboard: React.FC = () => {
               </div>
 
               <hr className="h-px w-full bg-gray-200 border-0" />
-              {user?.isOutside ? (
+              {/* {user?.isOutside ? (
                 <Link
                   to="/student/success"
                   className="text-white text-p16 py-3 px-10 rounded-full transition-all font-semibold shadow-lg bg-amber-500 hover:bg-amber-400 lg:block shadow-gray-200"
@@ -143,7 +143,7 @@ const studentDashboard: React.FC = () => {
                 >
                   Request Exit
                 </Link>
-              )}
+              )} */}
               {/* </Link> */}
               <Link
                 to={"/student/update"}
@@ -155,29 +155,29 @@ const studentDashboard: React.FC = () => {
               </Link>
             </div>
 
-            <div className="flex justify-center mt-5 bg-amber-50 rounded-xl shadow-card-shadow px-5 py-4 space-x-4 min-w-[19rem] items-center">
+            {/* <div className="flex justify-center mt-5 bg-amber-50 rounded-xl shadow-card-shadow px-5 py-4 space-x-4 min-w-[19rem] items-center"> 
               <img src={lightbulb} className="h-[32px]" />
               <p className="hidden lg:block text-amber-dark text-[12px] font-medium">
                 {user?.isOutside
                   ? "Back to campus? Ask the gate security to close your entry!"
                   : "Trying to go out of campus? Open this site on your mobile to submit an exit request!"}
-              </p>
+              </p> 
               <p className="lg:hidden text-amber-dark text-[12px] font-medium">
                 {user?.isOutside
                   ? "Back to campus? Ask the gate security to close your entry!"
                   : "Trying to go out of campus? Tap the Request Exit button to open an entry!"}
               </p>
-            </div>
+            </div> */}
           </div>
 
-          <div className="overflow-auto mb-5 flex flex-col bg-white rounded-xl shadow-card-shadow w-full space-y-4 p-5 h-[82vh]">
+          {/* <div className="overflow-auto mb-5 flex flex-col bg-white rounded-xl shadow-card-shadow w-full space-y-4 p-5 h-[82vh]">
             <span className="flex items-center justify-between">
               <h1 className="font-lexend font-bold text-h24 mx-4">Overview</h1>
               <DateRange />
             </span>
             <Table columns={columns} values={values} />
             <Pagination />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -193,6 +193,7 @@ const studentDashboard: React.FC = () => {
 
             <Dropdown
               options={[
+                { href: "/viewprofile", label: "View Profile" },
                 { href: "/changepass", label: "Change Password" },
                 { href: "/logout", label: "Sign Out" },
               ]}
@@ -231,7 +232,7 @@ const studentDashboard: React.FC = () => {
                 <p>{user?.room ? `${user?.hostel} / ${user?.room}` : "NA"}</p>
               </span>
             </div>
-            <div className="flex flex-col items-center space-y-2 mt-6">
+            {/* <div className="flex flex-col items-center space-y-2 mt-6">
               <Link
                 to={user?.isOutside ? "/student/success" : "/student/reason"}
                 className={`text-white text-p16 py-3 px-10 rounded-full  transition-all font-semibold shadow-lg ${
@@ -246,25 +247,30 @@ const studentDashboard: React.FC = () => {
               <Link to={`/student/report`} className="underline text-p14">
                 View Reports
               </Link>
-            </div>
+            </div> */}
+            {/* <div>
+            </div> */}
           </div>
-          <div
-            className={`flex justify-center bg-amber-50 rounded-xl shadow-card-shadow px-5 py-4 mt-10 space-x-4 items-center w-fit self-center ${
-              user?.isOutside ? "" : "hidden"
-            }`}
+          {/* <div>
+          </div> */}
+          {/* <div
+            // className={`flex justify-center bg-amber-50 rounded-xl shadow-card-shadow px-5 py-4 mt-10 space-x-4 items-center w-fit self-center ${
+            //   user?.isOutside ? "" : "hidden"
+            // }`}
           >
             <img src={lightbulb} className="h-[32px]" />
             <p className="text-amber-dark text-[12px] font-medium">
               Back to campus? Ask the gate security to close your entry!
             </p>
-          </div>
+          </div> */}
         </div>
 
         <footer className="mb-4 flex flex-col space-y-4 justify-center items-center">
           <div className="flex space-x-3 self-center">
             <img src={logo} className="w-[32px]" />
             <h1 className="flex flex-row font-lexend text-h28 text-primary">
-              Guar <span className="font-lexend font-bold text-h28">dian</span>
+              Mess{" "}
+              <span className="font-lexend font-bold text-h28">Minder</span>
             </h1>
           </div>
         </footer>

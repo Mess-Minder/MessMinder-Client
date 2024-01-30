@@ -13,7 +13,7 @@ const registerForm = () => {
 
   const onSubmit = async (data: any) => {
     let { register_institute_email } = data;
-
+    
     const requestObj = {
       email: register_institute_email,
     };
@@ -25,6 +25,7 @@ const registerForm = () => {
       const result = await axios.post("/is-registered", requestObj);
       toast.dismiss("check_email");
 
+      //find
       if (!result.data) {
         await toast.promise(
           axios.post("/send-otp", requestObj),

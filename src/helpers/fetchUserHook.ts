@@ -15,12 +15,16 @@ const useFetchProfile = (query: string) => {
         const response = await axios.get(query);
 
         if (response.data.role === "student") {
-          const outStatus = await axios.get("/student/outing-status");
-          if (outStatus.data === "outside") {
-            setUser({ ...response.data, isOutside: true });
-          } else {
-            setUser({ ...response.data, isOutside: false });
-          }
+          // const outStatus = await axios.get("/student/outing-status");
+          // if (outStatus.data === "outside") {
+          //   setUser({ ...response.data, isOutside: true });
+          // } else {
+            // setUser({ ...response.data, isOutside: false });
+          // }
+          // setUser({ ...response.data, isOutside: false });
+          // console.log(111)
+          setUser({...response.data});
+          console.log(response.data);
         } else {
           setUser(response.data);
         }

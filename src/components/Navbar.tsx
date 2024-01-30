@@ -86,6 +86,7 @@ const Navbar = ({ role }: { role: string }) => {
         <div className="flex items-center">
           <Dropdown
             options={[
+              { href: "/viewprofile", label: "View Profile" },
               { href: "/student/update", label: "Update Profile" },
               { href: "/changepass", label: "Change Password" },
               { href: "/logout", label: "Sign Out" },

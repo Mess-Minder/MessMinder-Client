@@ -6,7 +6,7 @@ const Logo = () => {
     <div className="flex space-x-4">
       <img src={logo} className="w-[32px]" />
       <h1 className="hidden lg:flex flex-row font-lexend text-h28 text-primary">
-        Guar <span className="font-lexend font-bold text-h28">dian</span>
+        Mess <span className="font-lexend font-bold text-h28">Minder</span>
       </h1>
 
       <img src={line} className="" />
